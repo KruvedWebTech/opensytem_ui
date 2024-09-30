@@ -1,0 +1,16 @@
+.page {
+  height: 100vh; /* Full height */
+}
+
+.container {
+  height: 100%; /* Full height */
+}
+
+.card {
+  flex-grow: 1; /* Allow the card to grow to fill space */
+}
+
+.card-body {
+  flex-grow: 1; /* Allow the card body to grow */
+  overflow-y: auto; /* Enable scrolling within the card body if necessary */
+}

@@ -1,0 +1,16 @@
+.loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #007bff;
+    z-index: 9999;
+    animation: loadingAnimation 2s ease-in-out infinite;
+  }
+
+  @keyframes loadingAnimation {
+    0% { width: 0%; }
+    50% { width: 50%; }
+    100% { width: 100%; }
+  }
