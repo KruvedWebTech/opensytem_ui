@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { StorageService } from './storage.service'; // Import StorageService for token management
+import { LoginResponse } from '../models/login-response.model'; // Import your response model
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private storageService: StorageService) {}
 
   // Login method that sends credentials and stores the received token
-  login(credentials: { email: string, password: string }): Observable<any> {
-    return new Observable((observer) => {
-      this.http.post(`${this.apiUrl}/Auth/login`, credentials).subscribe(
-        (response: any) => {
-          // Assuming the response contains a JWT token
-          if (response && response.token) {
-            // Store the token in local storage using StorageService
-            this.storageService.setToken(response.token);
-          }
-          observer.next(response); // Forward the response
-        },
-        (error) => {
-          observer.error(error);
+  login(credentials: { email: string, password: string }): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/Auth/login`, credentials).pipe(
+      map((response) => {
+        // Assuming the response contains a JWT token
+        if (response && typeof response.data == 'string') {
+          // Store the token in local storage using StorageService
+          this.storageService.setToken(response.data);
         }
-      );
-    });
+        return response; // Forward the response
+      }),
+      catchError((error) => {
+        console.error('Login error:', error);
+        return throwError(error); // Handle error appropriately
+      })
+    );
   }
 
   // Signup method (unchanged)
@@ -42,7 +42,7 @@ export class AuthService {
     // Use StorageService to get the role from the token
     const role = this.storageService.getRoleFromToken();
     // Check if the role is admin or other elevated roles
-    return role === 'Admin'|| role ==='admin' || role === 'Superadmin' || role === 'manager';
+    return role === 'Admin' || role === 'admin' || role === 'Superadmin' || role === 'manager';
   }
 
   // Optional: Check if the user is logged in by checking if a token exists

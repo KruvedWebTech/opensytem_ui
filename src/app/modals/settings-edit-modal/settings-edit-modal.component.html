@@ -1,0 +1,18 @@
+<div class="modal modal-blur fade" tabindex="-1" [ngClass]="{'modal-show': showModal, 'modal-hide': !showModal}" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Setting</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Input fields for editing settings -->
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" (click)="closeModal()">Cancel</a>
+          <a href="#" class="btn btn-primary ms-auto" (click)="editSetting()">Save Changes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

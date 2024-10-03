@@ -20,6 +20,10 @@ import { HomepageComponent } from './client/modules/homepage/homepage.component'
 import { LoadingComponent } from './shared/loading/loading.component';
 import { UserManagementComponent } from './admin/modules/user-management/user-management.component';
 import { SettingsComponent } from './admin/modules/settings/settings.component';
+import { NewUserModalComponent } from './modals/new-user-modal/new-user-modal.component';
+import { UserEditModalComponent } from './modals/user-edit-modal/user-edit-modal.component';
+import { SettingsCreateModalComponent } from './modals/settings-create-modal/settings-create-modal.component';
+import { SettingsEditModalComponent } from './modals/settings-edit-modal/settings-edit-modal.component';
 
 
 @NgModule({
@@ -32,6 +36,10 @@ import { SettingsComponent } from './admin/modules/settings/settings.component';
     LoadingComponent,
     HeaderComponent,
     HomepageComponent,
+    NewUserModalComponent,
+    UserEditModalComponent,
+    SettingsCreateModalComponent,
+    SettingsEditModalComponent,
     // UserManagementComponent,
     // SettingsComponent,
 

@@ -1,6 +1,14 @@
-<div class="page" >
-    <app-header></app-header>
-    <app-sidebar></app-sidebar>
-    <router-outlet></router-outlet>
-
-    </div>
+<div class="page">
+    <!-- Sidebar -->
+     
+    <app-sidebar class="navbar navbar-vertical navbar-expand-sm navbar-dark"></app-sidebar>
+  
+    <!-- Main content wrapper -->
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <app-header></app-header>
+      
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+  

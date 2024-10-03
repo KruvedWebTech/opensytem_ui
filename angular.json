@@ -46,17 +46,18 @@
               "src/styles.scss",
               "src/app/common/styles/tabler.min.css",
               
-              "src/app/common/styles/tabler-payments.min.css",
+              "src/app/common/styles/tabler.css",
               "src/app/common/styles/tabler-vendors.min.css",
               "src/app/common/styles/demo.min.css"
             ],
             "scripts": [
               "src/app/common/scripts/demo.min.js",
+              "src/app/common/scripts/demo-theme.js",
               "src/app/common/scripts/tabler.min.js",
+              "src/app/common/scripts/tabler.esm.min.js",
               "src/app/common/scripts/demo-theme.min.js",
+              "src/app/common/libs/jsvectormap/dist/js/jsvectormap.min.js"
               
-              "src/app/common/libs/jsvectormap/dist/js/jsvectormap.min.js",
-              "src/app/common/libs/jsvectormap/dist/maps/world.js"
               
               
 

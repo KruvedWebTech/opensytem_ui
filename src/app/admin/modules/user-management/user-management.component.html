@@ -1,107 +1,122 @@
-<div class="col-12">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Users</h3>
-    </div>
-    <div class="card-body border-bottom py-3">
-      <div class="d-flex">
-        <div class="text-secondary">
-          Show
-          <div class="mx-2 d-inline-block">
-            <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Users count">
-          </div>
-          entries
-        </div>
-        <div class="ms-auto text-secondary">
-          Search:
-          <div class="ms-2 d-inline-block">
-            <input type="text" class="form-control form-control-sm" aria-label="Search user">
-          </div>
+
+<div class="navbar navbar-expand-md d-print-none">
+  <div class="container-xl mt-3">
+    <div class="col-12">
+      <div class="card" style="border: none;"> <!-- Remove the card border -->
+        <!-- Breadcrumb Navigation -->
+        <div class="card-body">
+          <ol class="breadcrumb breadcrumb-arrows">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs">
+              <a *ngIf="breadcrumb.url; else active" [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+              <ng-template #active>
+                <span class="font-weight-bold">{{ breadcrumb.label }}</span> <!-- Bold the active breadcrumb -->
+              </ng-template>
+            </li>
+          </ol>
         </div>
       </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table card-table table-vcenter text-nowrap datatable">
-        <thead>
-          <tr>
-            <th class="w-1">#</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th class="text-end">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              <span class="avatar avatar-sm me-2" style="background-image: url('path-to-profile-pic.jpg')"></span>
-              John Doe
-            </td>
-            <td>Admin</td>
-            <td>john.doee.com</td>
-            <td>Male</td>
-            <td class="text-end">
-              <span class="dropdown">
-                <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">Actions</button>
-                <div class="dropdown-menu dropdown-menu-end">
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                </div>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-              <span class="avatar avatar-sm me-2" style="background-image: url('path-to-profile-pic.jpg')"></span>
-              Jane Smith
-            </td>
-            <td>User</td>
-            <td>jane.smith.com</td>
-            <td>Female</td>
-            <td class="text-end">
-              <span class="dropdown">
-                <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">Actions</button>
-                <div class="dropdown-menu dropdown-menu-end">
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                </div>
-              </span>
-            </td>
-          </tr>
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
-    </div>
-    <div class="card-footer d-flex align-items-center">
-      <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
-      <ul class="pagination m-0 ms-auto">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M15 6l-6 6l6 6"></path>
-            </svg>
-            prev
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            next
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M9 6l6 6l-6 6"></path>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+      
+      <div class="card">
+        
+        <div class="card-header">
+          <h3 class="card-title">Users</h3>
+        </div>
+        
+        
+        <div class="card-body border-bottom py-3">
+          <div class="d-flex">
+            <div class="text-secondary">
+              Show
+              <div class="mx-2 d-inline-block">
+                <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Users count">
+              </div>
+              entries
+            </div>
+            <div class="col-auto ms-auto d-print-none">
+              <div class="d-flex">
+                <input type="search" class="form-control d-inline-block w-9 me-3" placeholder="Search user…">
+                <button type="button" class="btn btn-primary"(click)="openCreateModal()">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
+                  New user
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="table-responsive">
+  <table class="table card-table table-vcenter text-nowrap datatable">
+    <thead>
+      <tr>
+        <th class="w-1"><button class="table-sort" >#</button></th>
+        <th><button class="table-sort" (click)="sort('firstName')">Name</button></th>
+        <th>Role</th>
+        <th><button class="table-sort" (click)="sort('email')">Email</button></th>
+        <th>Gender</th>
+        <th><button class="table-sort" (click)="sort('createdOn')">Created On</button></th> <!-- Added Created On column -->
+        <th>Status</th> <!-- Added Status column -->
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of displayedUsers; let i = index">
+        <td>{{ startIndex + (i + 1) }}</td>
+        <td>
+          <span class="avatar avatar-sm me-2" [style.backgroundImage]="'url(' + user.profilePic + ')'"></span>
+          {{ user.firstName }} {{ user.lastName }}
+        </td>
+        <td>{{ user.roles[0].roleName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.createdOn | date: 'shortDate' }}</td>
+        <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+        <td class="text-end">
+          <span class="dropdown">
+            <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">Actions</button>
+            <div class="dropdown-menu dropdown-menu-end">
+              <a class="dropdown-item" (click)="editUser(user)">Edit</a>
+              <a class="dropdown-item" (click)="deleteUser(user.userId)">Delete</a>
+            </div>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<div class="card-footer d-flex align-items-center">
+  <p class="m-0 text-secondary">
+    Showing <span>{{ startIndex + 1 }}</span> to <span>{{ endIndex }}</span> of <span>{{ totalUsers }}</span> entries
+  </p>
+  <ul class="pagination m-0 ms-auto">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="goToPage(currentPage - 1)" tabindex="-1" aria-disabled="currentPage === 1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M15 6l-6 6l6 6"></path>
+        </svg>
+        prev
+      </a>
+    </li>
+    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+      <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="goToPage(currentPage + 1)">
+        next
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M9 6l6 6l-6 6"></path>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- User Modals -->
+<!-- User Modals -->
+<!-- <app-new-user-modal *ngIf="showCreateModal" [showModal]="showCreateModal" (close)="closeCreateModal()"></app-new-user-modal>
+<app-user-edit-modal *ngIf="showEditModal" [showModal]="showEditModal" (close)="closeEditModal()"></app-user-edit-modal> -->

@@ -1,6 +1,5 @@
-import { Component, OnInit, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoadingService } from './loading.service';
 
 @Component({
@@ -9,13 +8,11 @@ import { LoadingService } from './loading.service';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent implements OnInit {
-
-  isLoading = false;
+  isLoading: boolean = false;
 
   constructor(private loadingService: LoadingService) {}
 
-  ngOnInit(): void {
-    // Subscribe to loading observable
+  ngOnInit() {
     this.loadingService.loading$.subscribe((isLoading) => {
       this.isLoading = isLoading;
     });
